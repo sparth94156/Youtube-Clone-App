@@ -9,7 +9,6 @@ const useChannelInfo = (queryParams) => {
         const info = await fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id='+ queryParams + '&key='+ YOUTUBE_API_KEY)
         const json = await info.json()
         setvideoInfo(json.items)
-        // console.log(json)
     }
   
     useEffect(() => {

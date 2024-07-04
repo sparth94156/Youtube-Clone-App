@@ -7,7 +7,8 @@ const ButtonList = () => {
   return (
       <div className='flex gap-x-3 py-4 px-5 overflow-x-scroll scrollbar-hide'>
         {
-          List.map(button => <Button name={button} />)
+          // Not recommeded to use index as unique keys
+          List.map((button, index) => <Button key={index} name={button} />)
         }
       </div>
   )

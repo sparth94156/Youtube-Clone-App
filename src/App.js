@@ -6,6 +6,7 @@ import { appStore } from './utils/appStore';
 import { Outlet, RouterProvider, createBrowserRouter, } from 'react-router-dom';
 import WatchPage from './components/WatchPage';
 import Error from './components/Error';
+import SuggestionList from './components/SuggestionList';
 
 function App() {
 
@@ -16,8 +17,12 @@ function App() {
       errorElement: <Error />
     },
     {
-      path: "watch",
+      path: "/watch",
       element: <WatchPage />
+    },
+    {
+      path: "/results",
+      element: <SuggestionList/>
     }
   ])
   return (

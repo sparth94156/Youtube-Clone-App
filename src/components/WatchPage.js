@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import SideMenu from './SideMenu'
 import useChannelInfo from '../hooks/useChannelInfo'
 import { useSearchParams } from 'react-router-dom'
-import useSubscribers from '../hooks/useSubscribers'
+import CommentsContainer from './CommentsContainer'
 
 const WatchPage = () => {
 
@@ -21,6 +21,7 @@ const WatchPage = () => {
   const { viewCount } = statistics;
 
   const stringArray = title.split(' ')
+
   return (
     <div>
       {
@@ -57,11 +58,13 @@ const WatchPage = () => {
               </div>
             </div>
           </div>
+          <p className='text-lg'>Comments</p>
+          <CommentsContainer/>
         </div>
 
         <div className='w-[402px] flex-col'>
           <div className='w-full mb-10'>
-            <button className='w-full bg-black text-white p-2 rounded-full'>Show chat replay</button>
+            <button className='w-full bg-black text-white p-2 rounded-full hover:bg-gray-900'>Show chat replay</button>
           </div>
           <div className='flex overflow-x-scroll flex-nowrap gap-2 scrollbar-hide'>
             {
@@ -73,15 +76,15 @@ const WatchPage = () => {
           <div className='w-[100%] my-4'>
             <div className='w-[100%] flex'>
               <div className='w-[40%]'>
-                <img src={thumbnails.standard.url} className='object-cover w-full rounded-lg cursor-pointer'></img>
+                <img alt='thumbnail' src={thumbnails.standard.url} className='object-cover w-full rounded-lg cursor-pointer'></img>
               </div>
               <div className='w-[59%] cursor-pointer pl-3'>
                 <div>
-                {
-                  stringArray.length >= 8 ? (<span className='font-semibold text-[13px] flex flex-nowrap overflow-y-clip'>{title}</span>)
-                    :
-                    (<span className='font-semibold text-[13px] mb-1 flex flex-nowrap'>{title}</span>)
-                }
+                  {
+                    stringArray.length >= 8 ? (<span className='font-semibold text-[13px] flex flex-nowrap overflow-y-clip'>{title}</span>)
+                      :
+                      (<span className='font-semibold text-[13px] mb-1 flex flex-nowrap'>{title}</span>)
+                  }
                 </div>
                 <p className='text-[12px] mt-1 mb-0 p-0'>{channelTitle}</p>
                 <span className='text-[12px]'>{Math.floor(viewCount / 1000)}K views . 1 day ago</span>
@@ -95,7 +98,6 @@ const WatchPage = () => {
           </div>
         </div>
       </div>
-
     </div>
 
   )

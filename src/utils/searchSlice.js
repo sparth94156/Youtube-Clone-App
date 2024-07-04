@@ -15,7 +15,6 @@ export default searchSlice.reducer
 
 export const { cacheResult } = searchSlice.actions
 
-// state = {...action.payload}   we are spreding an object
 
 /*
 {
@@ -26,5 +25,17 @@ export const { cacheResult } = searchSlice.actions
     iph: []
     }
 
+    if(!cachedInfo[searchQuery]){
+     getSearchSuggestions()
+    }
+     else{
+    setqueryResult(cachedInfo[searchQuery])
+     }
+
+
+     state = {...action.payload}   we are spreding an object
+
 }
 */
+
+

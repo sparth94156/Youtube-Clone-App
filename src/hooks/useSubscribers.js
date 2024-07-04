@@ -12,7 +12,6 @@ const useSubscribers = (channelId) => {
     const getSubscriberInfo = async () => {
         const info = await fetch('https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id='+ channelId+ '&key='+ YOUTUBE_API_KEY)
         const json = await info.json()
-        console.log(json)
         setSubscribers(json.items)
         // setSubscribers(json.items)
     }

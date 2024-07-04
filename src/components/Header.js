@@ -21,15 +21,15 @@ const Header = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-        
-        /* 
-        Check if queryResult for the input query is present in the store 
-        - If yes then access the cache data & setqueryResult with the cached data & don't make API call
-        */
-            if(cachedInfo[searchQuery]){ 
+
+            /* 
+            Check if queryResult for the input query is present in the store 
+            - If yes then access the cache data & setqueryResult with the cached data & don't make API call
+            */
+            if (cachedInfo[searchQuery]) {
                 setqueryResult(cachedInfo[searchQuery])
             }
-            else{
+            else {
                 getSearchSuggestions()
             }
         }, 200)
@@ -41,12 +41,10 @@ const Header = () => {
     }, [searchQuery])
 
     const getSearchSuggestions = async () => {
-        console.log("API CALL: " + searchQuery)
         const data = await fetch(YOUTUBE_SEARCH_API + searchQuery)
         const json = await data.json()
         setqueryResult(json[1])
         dispatch(cacheResult({ [searchQuery]: json[1] }))     // Storing the cached data to prevent the same api call again.
-
     }
 
     return (
@@ -104,9 +102,9 @@ const Header = () => {
                 </div>
             </div>
             {
-                showSuggestion && <div className='bg-white w-[500px] absolute left-[304px] top-[60px] p-2 rounded-xl'>
+                showSuggestion && <div className='bg-white w-[500px] absolute left-[304px] top-[60px] px-2 rounded-xl'>
                     {
-                        queryResult && queryResult.map(result => <SearchSuggestions result={result} />)
+                        queryResult && queryResult.map(result => <SearchSuggestions key={result} result={result}/> )
                     }
                 </div>
             }
