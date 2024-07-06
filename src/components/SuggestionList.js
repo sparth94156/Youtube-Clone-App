@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { YOUTUBE_API_KEY } from './constants'
-import Searchresult from './Searchresult'
 
 const SuggestionList = () => {
 
@@ -25,10 +24,8 @@ const SuggestionList = () => {
   if(!searchResults) return ;
 
   return (
-  <div className='pt-20 flex flex-wrap gap-4'>
-    {
-      searchResults.map(result => <Searchresult info={result}/>)
-    }
+  <div>
+  
   </div>
   )
 

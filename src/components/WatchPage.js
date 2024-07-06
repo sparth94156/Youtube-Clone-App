@@ -3,11 +3,14 @@ import SideMenu from './SideMenu'
 import useChannelInfo from '../hooks/useChannelInfo'
 import { useSearchParams } from 'react-router-dom'
 import CommentsContainer from './CommentsContainer'
+import LiveChat from './LiveChat'
+import { useState } from 'react'
 
 const WatchPage = () => {
 
   const showMenu = useSelector(store => store.header.isMenuOpen)
   const [searchParams] = useSearchParams();
+  const [showChat, setShowChat] = useState(true)
 
   const urlParams = searchParams.get('v')        // get method used to get search query of the URL
 
@@ -59,21 +62,28 @@ const WatchPage = () => {
             </div>
           </div>
           <p className='text-lg'>Comments</p>
-          <CommentsContainer/>
+          <CommentsContainer />
         </div>
 
         <div className='w-[402px] flex-col'>
           <div className='w-full mb-10'>
-            <button className='w-full bg-black text-white p-2 rounded-full hover:bg-gray-900'>Show chat replay</button>
+            <button className='w-full p-2 rounded-full border border-gray-300 bg-slate-200 hover:bg-slate-300'
+            onClick={() => {
+              setShowChat(!showChat)
+            }}>Show chat replay</button>
+            {
+              showChat && <LiveChat />
+            }
+              
           </div>
-          <div className='flex overflow-x-scroll flex-nowrap gap-2 scrollbar-hide'>
+          <div className='flex overflow-y-scroll flex-nowrap gap-2 scrollbar-hide'>
             {
               tags && tags.map(tag => (
                 <button className='bg-gray-800 text-white text-[14px] text-nowrap p-2 rounded-lg'>{tag}</button>
               ))
             }
           </div>
-          <div className='w-[100%] my-4'>
+          <div className='w-[100%]'>
             <div className='w-[100%] flex'>
               <div className='w-[40%]'>
                 <img alt='thumbnail' src={thumbnails.standard.url} className='object-cover w-full rounded-lg cursor-pointer'></img>
