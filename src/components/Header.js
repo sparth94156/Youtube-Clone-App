@@ -104,7 +104,9 @@ const Header = () => {
             {
                 showSuggestion && <div className='bg-white w-[500px] absolute left-[304px] top-[60px] px-2 rounded-xl'>
                     {
-                        queryResult && queryResult.map(result => <SearchSuggestions key={result} result={result}/> )
+                        queryResult && queryResult.map(result => <a href={"/results" + result} >
+                            <SearchSuggestions key={result} result={result} />
+                        </a>)
                     }
                 </div>
             }

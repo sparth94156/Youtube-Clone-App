@@ -25,7 +25,7 @@ const SuggestionList = () => {
 
   return (
   <div>
-  
+    SuggestionList
   </div>
   )
 

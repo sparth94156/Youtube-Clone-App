@@ -21,9 +21,9 @@ function App() {
       element: <WatchPage />
     },
     {
-      path: "/results",
+      path: "results",
       element: <SuggestionList/>
-    }
+    }  
   ])
   return (
     <div className="App">

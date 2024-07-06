@@ -2,15 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { YOUTUBE_API } from './constants'
 import VideoCard from './VideoCard'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addVideos } from '../utils/videoSlice'
 
 const VideoContainer = () => {
 
   const [videos, setVideos] = useState(null)
 
+  const dispatch = useDispatch()
+
   const fetchVideos = async () => {
     const data = await fetch(YOUTUBE_API)
     const json = await data.json()
     setVideos(json.items)
+    dispatch(addVideos(json.items))
   }
 
   useEffect(() => {

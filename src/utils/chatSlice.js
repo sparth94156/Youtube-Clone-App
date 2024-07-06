@@ -4,10 +4,7 @@ import { LIVE_CHAT_OFFSET } from "../components/constants";
 const chatSlice = createSlice({
     name: 'chat',
     initialState: {
-        messages: [{
-            name:"Ravi Singh",
-            message: "Lorem ipsum dolor sit amet",
-        }]
+        messages: []
     },
     reducers: {
         addMessage: (state,action) => {
