@@ -24,7 +24,7 @@ const Header = () => {
 
             /* 
             Check if queryResult for the input query is present in the store 
-            - If yes then access the cache data & setqueryResult with the cached data & don't make API call
+            - If yes then access the cache data & setqueryResult with the cached data & don't make same API call again
             */
             if (cachedInfo[searchQuery]) {
                 setqueryResult(cachedInfo[searchQuery])
@@ -46,7 +46,7 @@ const Header = () => {
         setqueryResult(json[1])
         dispatch(cacheResult({ [searchQuery]: json[1] }))     // Storing the cached data to prevent the same api call again.
     }
-
+    
     return (
         <div>
             <div className='flex h-[56px] px-1 w-full justify-between fixed bg-white'>
@@ -104,9 +104,7 @@ const Header = () => {
             {
                 showSuggestion && <div className='bg-white w-[500px] absolute left-[304px] top-[60px] px-2 rounded-xl'>
                     {
-                        queryResult && queryResult.map(result => <a href={"/results" + result} >
-                            <SearchSuggestions key={result} result={result} />
-                        </a>)
+                        queryResult && queryResult.map(result => <SearchSuggestions key={result} result={result} />)
                     }
                 </div>
             }

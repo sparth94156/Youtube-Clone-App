@@ -15,13 +15,13 @@ const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const [showChat, setShowChat] = useState(false)
   const videoList = useSelector(store => store.video.popularVideos)
-  console.log(videoList)
+  // console.log(videoList)
 
   const urlParams = searchParams.get('v')        // get method used to get search query of the URL
 
   //custom hook
   const videoInfo = useChannelInfo(urlParams)
-
+  console.log(videoInfo)
   if (!videoInfo) return;
 
   const { snippet, statistics } = videoInfo[0];
@@ -67,22 +67,22 @@ const WatchPage = () => {
             <div className='text-sm mb-3 p-2 rounded-lg'>
               <p className='font-semibold mb-2'>{numberWithCommas(viewCount)} views</p>
               {
-                showDesc ? 
-                (
-                <div className='overflow-hidden h-[80px] my-2 py-2 rounded-lg leading-6'>
-                  {localized.description}
-                </div>
-                ) : 
-                (
-                <div className='my-2 p-2 rounded-lg leading-6'>
-                  {localized.description}
-                </div>
-                )
+                showDesc ?
+                  (
+                    <div className='my-2 p-2 rounded-lg leading-6'>
+                      {localized.description}
+                    </div>
+                  ) :
+                  (
+                    <div className='overflow-hidden h-[80px] my-2 py-2 rounded-lg leading-6'>
+                      {localized.description}
+                    </div>
+                  )
               }
 
               <button onClick={() => setShowDesc(!showDesc)}>
                 {
-                  showDesc ? 'Show More' : 'Show less'
+                  showDesc ? 'Show less' : 'Show More'
                 }</button>
             </div>
           </div>

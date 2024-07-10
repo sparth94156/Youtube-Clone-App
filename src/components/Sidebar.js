@@ -7,7 +7,7 @@ const Sidebar = () => {
 
   const showMenu = useSelector(store => store.header.isMenuOpen)
 
-  if(showMenu) return <SideMenu/>
+  if (showMenu) return <SideMenu />
 
   return (
     <div className='grid-flow-row w-[72px] h-screen fixed z-20 mt-14 bg-white'>
@@ -16,9 +16,9 @@ const Sidebar = () => {
           <i class="fa-solid fa-house fa-lg"></i>
         </div>
         <Link to="/">
-        <div className='w-full flex justify-center mt-1'>
-          <span className='text-[10px]'>Home</span>
-        </div>
+          <div className='w-full flex justify-center mt-1'>
+            <span className='text-[10px]'>Home</span>
+          </div>
         </Link>
       </div>
       <div className='grid-row-2 hover:bg-slate-200 py-[14px] mb-2 rounded-md cursor-pointer'>
@@ -38,7 +38,10 @@ const Sidebar = () => {
       </div>
       <div className='grid-row-4 hover:bg-slate-200 py-[14px] mb-2 rounded-md cursor-pointer'>
         <div className='w-full flex justify-center'>
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" focusable="false"><path d="m11 7 6 3.5-6 3.5V7zm7 13H4V6H3v15h15v-1zm3-2H6V3h15v15zM7 17h13V4H7v13z"></path></svg>        </div>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
+            <path d="m11 7 6 3.5-6 3.5V7zm7 13H4V6H3v15h15v-1zm3-2H6V3h15v15zM7 17h13V4H7v13z"></path>
+          </svg>
+        </div>
         <div className='w-full flex justify-center mt-1'>
           <span className='text-[10px]'>You</span>
         </div>
@@ -48,3 +51,5 @@ const Sidebar = () => {
 }
 
 export default Sidebar
+
+
